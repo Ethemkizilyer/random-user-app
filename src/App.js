@@ -214,7 +214,7 @@ function App() {
             onClick={() => {
               setEkle([]);
             }}
-            className="btn btn-warning"
+            className="btn btn-danger"
           >
             DELETE ALL
           </button>
