@@ -210,6 +210,14 @@ function App() {
           >
             ADD
           </button>
+          <button
+            onClick={() => {
+              setEkle([]);
+            }}
+            className="btn btn-warning"
+          >
+            DELETE ALL
+          </button>
         </div>
       </div>
       <div>
