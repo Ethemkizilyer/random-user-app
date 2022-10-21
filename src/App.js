@@ -13,9 +13,18 @@ import phoneSvg from "./assets/phone.svg";
 import padlockSvg from "./assets/padlock.svg";
 import cwSvg from "./assets/cw.svg";
 
+const getLocalStorage = () => {
+  let eklen = localStorage.getItem("eklen");
+  if (eklen) {
+    return JSON.parse(localStorage.getItem("eklen"));
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [ert, setErt] = useState([]);
-  const [eklen, setEkle] = useState([]);
+  const [eklen, setEkle] = useState(getLocalStorage());
   const [pasw, setPasw] = useState(false);
   const [tel, setTel] = useState(false);
   const [loca, setLoca] = useState(false);
@@ -66,6 +75,10 @@ function App() {
       alert("Listede Mevcut...");
     }
   };
+
+   useEffect(() => {
+     localStorage.setItem("eklen", JSON.stringify(eklen));
+   }, [eklen]);
 
   return (
     <div style={{}} className="App m-5 d-flex justify-content-evenly">
