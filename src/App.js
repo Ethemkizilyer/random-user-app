@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -44,16 +43,24 @@ function App() {
         data: { results },
       } = await axios(url);
 
-
       setErt(results[0]);
     } catch (error) {
       console.log(error);
     }
   };
 
-
   console.log(ert);
-  const { picture, name, email, cell, location, registered, id, login,gender } = ert;
+  const {
+    picture,
+    name,
+    email,
+    cell,
+    location,
+    registered,
+    id,
+    login,
+    gender,
+  } = ert;
 
   let jk = id?.value;
   let pic = picture?.large;
@@ -65,7 +72,7 @@ function App() {
   let pas = login?.password;
 
   const ekleme = () => {
-    let newtas = { fir, las, tit, email, cell, ag, jk, pas,gender};
+    let newtas = { fir, las, tit, email, cell, ag, jk, pas, gender };
 
     console.log(eklen);
 
@@ -76,9 +83,9 @@ function App() {
     }
   };
 
-   useEffect(() => {
-     localStorage.setItem("eklen", JSON.stringify(eklen));
-   }, [eklen]);
+  useEffect(() => {
+    localStorage.setItem("eklen", JSON.stringify(eklen));
+  }, [eklen]);
 
   return (
     <div className="App">
@@ -170,7 +177,9 @@ function App() {
                   </button>
                 </div>
                 {loca && (
-                  <div className="kardes">My street is {location?.street.name}</div>
+                  <div className="kardes">
+                    My street is {location?.street.name}
+                  </div>
                 )}
               </div>
 
@@ -231,7 +240,7 @@ function App() {
             </button>
           </div>
         </div>
-        <div>
+        <div className="asd">
           <div className="container">
             <Table
               style={{
@@ -267,15 +276,18 @@ function App() {
               ))}
             </Table>
           </div>
-          {eklen.length==0 ? ""
-          : <button
-            onClick={() => {
-              setEkle([]);
-            }}
-            className="btn btn-danger"
-          >
-            DELETE ALL
-          </button>}
+          {eklen.length == 0 ? (
+            ""
+          ) : (
+            <button
+              onClick={() => {
+                setEkle([]);
+              }}
+              className="btn btn-danger"
+            >
+              DELETE ALL
+            </button>
+          )}
         </div>
       </div>
     </div>
