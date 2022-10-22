@@ -81,9 +81,9 @@ function App() {
    }, [eklen]);
 
   return (
-    <div className="App m-5">
+    <div className="App">
       <h1>EMPLOYEE LIST</h1>
-      <div className="m-5  d-flex justify-content-evenly">
+      <div className="m-5  d-flex flex-wrap justify-content-evenly">
         <div>
           <Table
             style={{
@@ -105,8 +105,8 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
+              <div className="ana">
+                <div>
                   <button
                     className="icon"
                     data-label="name"
@@ -118,16 +118,17 @@ function App() {
                       id="iconImg"
                     />
                   </button>
-                </td>
-                {is && (
-                  <td>
-                    My name is {name?.first} {name?.last}
-                  </td>
-                )}
-              </tr>
+                </div>
 
-              <tr>
-                <td>
+                {is && (
+                  <div className="kardes">
+                    My name is {name?.first} {name?.last}
+                  </div>
+                )}
+              </div>
+
+              <div className="ana">
+                <div>
                   <button
                     className="icon"
                     data-label="email"
@@ -135,12 +136,12 @@ function App() {
                   >
                     <img src={mailSvg} alt="mail" id="iconImg" />
                   </button>
-                </td>
-                {mek && <td>My email is {ert.email}</td>}
-              </tr>
+                </div>
+                {mek && <div className="kardes">My email is {ert.email}</div>}
+              </div>
 
-              <tr>
-                <td>
+              <div className="ana">
+                <div>
                   <button
                     className="icon"
                     data-label="age"
@@ -152,12 +153,14 @@ function App() {
                       id="iconImg"
                     />
                   </button>
-                </td>
-                {yas && <td>My age is {registered?.age}</td>}
-              </tr>
+                </div>
+                {yas && (
+                  <div className="kardes">My age is {registered?.age}</div>
+                )}
+              </div>
 
-              <tr>
-                <td>
+              <div className="ana">
+                <div>
                   <button
                     className="icon"
                     data-label="street"
@@ -165,12 +168,14 @@ function App() {
                   >
                     <img src={mapSvg} alt="map" id="iconImg" />
                   </button>
-                </td>
-                {loca && <td>My street is {location?.country}</td>}
-              </tr>
+                </div>
+                {loca && (
+                  <div className="kardes">My street is {location?.street.name}</div>
+                )}
+              </div>
 
-              <tr>
-                <td>
+              <div className="ana">
+                <div>
                   <button
                     className="icon"
                     data-label="phone"
@@ -178,12 +183,12 @@ function App() {
                   >
                     <img src={phoneSvg} alt="phone" id="iconImg" />
                   </button>
-                </td>
-                {tel && <td>My phone is {ert.cell}</td>}
-              </tr>
+                </div>
+                {tel && <div className="kardes">My phone is {ert.cell}</div>}
+              </div>
 
-              <tr>
-                <td
+              <div className="ana">
+                <div
                   className="animated jello infinite"
                   style={{ border: "none" }}
                 >
@@ -194,13 +199,17 @@ function App() {
                   >
                     <img src={padlockSvg} alt="lock" id="iconImg" />
                   </button>
-                </td>
+                </div>
                 {pasw && (
-                  <td style={{ border: "none" }} colSpan={2}>
+                  <div
+                    className="kardes"
+                    style={{ border: "none" }}
+                    colSpan={2}
+                  >
                     My password is {login?.password}
-                  </td>
+                  </div>
                 )}
-              </tr>
+              </div>
             </tbody>
           </Table>
           <div className="container d-flex justify-content-center gap-5">
@@ -220,19 +229,21 @@ function App() {
             >
               ADD
             </button>
-            <button
-              onClick={() => {
-                setEkle([]);
-              }}
-              className="btn btn-danger"
-            >
-              DELETE ALL
-            </button>
           </div>
         </div>
         <div>
           <div className="container">
-            <Table striped bordered hover>
+            <Table
+              style={{
+                width: "600px",
+                boxShadow:
+                  "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px",
+              }}
+              className=" mx-auto rounded-3"
+              striped
+              bordered
+              hover
+            >
               <thead>
                 <tr>
                   <th colSpan={1}>First Name</th>
@@ -256,6 +267,15 @@ function App() {
               ))}
             </Table>
           </div>
+          {eklen.length==0 ? ""
+          : <button
+            onClick={() => {
+              setEkle([]);
+            }}
+            className="btn btn-danger"
+          >
+            DELETE ALL
+          </button>}
         </div>
       </div>
     </div>

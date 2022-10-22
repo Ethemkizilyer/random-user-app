@@ -1,6 +1,16 @@
 .App {
   text-align: center;
-  transition: 1s;
+}
+.ana{
+display: flex;
+align-items: center;
+text-align: start;
+justify-content: center;
+border-top: 1px solid white;
+}
+.kardes{
+  width: 100%;
+  text-align: left;
 }
 
 .App-logo {
